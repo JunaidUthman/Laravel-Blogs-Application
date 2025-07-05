@@ -25,7 +25,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         //redirect the user to the home page
-        return redirect()->route('/');
+        return redirect('/');
     }
 
     public function login(Request $request){

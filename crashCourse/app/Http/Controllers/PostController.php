@@ -32,14 +32,17 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        
+        // validation
         $fields = $request->validate([
             'title' => ['required' , 'max:255'],
             'body' => ['required']
         ]);
 
+        // create the post
+
         Auth::user()->posts()->create($fields);
 
+        // redirection
         return back()->with('success' , 'Your post has been created');
     }
 
@@ -79,6 +82,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        
         Post::destroy($post->id);
         return back()->with('success' , 'Your post has been deleted');
     }
